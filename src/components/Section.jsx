@@ -1,20 +1,30 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import dummyText from "../dummytext";
+import TextComponent from "./TextComponent";
+import ChatBoxComponent from "./ChatBoxComponent";
+import "./css/Section.css";
 
-export default function Section({ title, id, textContent }) {
+export default function Section({ title, id, type }) {
+  let component = null;
+  switch (type) {
+    case "text":
+      component = <TextComponent />;
+      break;
+    case "chat-bot":
+      component = <ChatBoxComponent />;
+      break;
+    default:
+      component = null;
+  }
+
   return (
     <div className="section-content" id={id}>
-      <Container maxWidth="lg">
-        <Typography color="secondary" variant="h1" component="h1">
+      <Container maxWidth="lg" classes={{ label: `section-${id}` }}>
+        <Typography color="secondary" variant="h2" component="h1">
           {title}
         </Typography>{" "}
-        {textContent ? (
-          <Typography color="primary" variant="h6" component="h1">
-            {dummyText}
-          </Typography>
-        ) : null}
+        {component}{" "}
       </Container>
     </div>
   );
