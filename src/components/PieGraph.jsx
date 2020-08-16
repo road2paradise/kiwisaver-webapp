@@ -4,131 +4,19 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import CollapsibleTable from "./DropdownTable";
+import CollapsibleTable from "./CollapisbleTable";
 import Typography from "@material-ui/core/Typography";
 import { PieChart } from "react-minimal-pie-chart";
 import "./css/PieGraph.css";
 
 function PieGraph(props) {
   const name = "Kenny";
-  const data = [
-    [
-      {
-        title: "Government Contribution",
-        value: 4.069309672837944,
-        color: "#E38627",
-      },
-      {
-        title: "Employee Contribution",
-        value: 16.64738877435945,
-        color: "#C13C37",
-      },
-      {
-        title: "Return fron investment",
-        value: 62.63591277844286,
-        color: "#6A2135",
-      },
-      {
-        title: "Your Contribution",
-        value: 16.64738877435974,
-        color: "#7ecbcf",
-      },
-    ],
-    [
-      {
-        title: "Government Contribution",
-        value: 10,
-        color: "#E38627",
-      },
-      {
-        title: "Employee Contribution",
-        value: 20,
-        color: "#C13C37",
-      },
-      {
-        title: "Return fron investment",
-        value: 20,
-        color: "#6A2135",
-      },
-      {
-        title: "Your Contribution",
-        value: 50,
-        color: "#7ecbcf",
-      },
-    ],
-    [
-      {
-        title: "Government Contribution",
-        value: 5,
-        color: "#E38627",
-      },
-      {
-        title: "Employee Contribution",
-        value: 10,
-        color: "#C13C37",
-      },
-      {
-        title: "Return fron investment",
-        value: 30,
-        color: "#6A2135",
-      },
-      {
-        title: "Your Contribution",
-        value: 55,
-        color: "#7ecbcf",
-      },
-    ],
-    [
-      {
-        title: "Government Contribution",
-        value: 44,
-        color: "#E38627",
-      },
-      {
-        title: "Employee Contribution",
-        value: 12,
-        color: "#C13C37",
-      },
-      {
-        title: "Return fron investment",
-        value: 5,
-        color: "#6A2135",
-      },
-      {
-        title: "Your Contribution",
-        value: 39,
-        color: "#7ecbcf",
-      },
-    ],
-    [
-      {
-        title: "Government Contribution",
-        value: 20,
-        color: "#E38627",
-      },
-      {
-        title: "Employee Contribution",
-        value: 50,
-        color: "#C13C37",
-      },
-      {
-        title: "Return fron investment",
-        value: 15,
-        color: "#6A2135",
-      },
-      {
-        title: "Your Contribution",
-        value: 15,
-        color: "#7ecbcf",
-      },
-    ],
-  ];
   const [percentage, setPercentage] = useState(0);
   const handleChange = (event) => {
     setPercentage(event.target.value);
   };
 
-  if (data === null) {
+  if (props.data === null) {
     return null;
   } else {
     return (
@@ -138,7 +26,7 @@ function PieGraph(props) {
           information you gave us!
         </Typography>
         <div className="table">
-          <CollapsibleTable />
+          <CollapsibleTable data={props.tableData[percentage]} />
         </div>
         <div className="pie-graph">
           <FormControl component="fieldset">
@@ -182,7 +70,7 @@ function PieGraph(props) {
               />
             </RadioGroup>
           </FormControl>
-          <PieChart animate={true} reveal={100} data={data[percentage]} />
+          <PieChart animate={true} reveal={100} data={props.data[percentage]} />
         </div>
       </>
     );

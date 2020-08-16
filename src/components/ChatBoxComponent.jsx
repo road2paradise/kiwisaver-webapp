@@ -98,7 +98,7 @@ function ChatBoxComponent(props) {
                   return "value must be a number";
                 } else if (value < 0) {
                   return "value must be positive";
-                } else if (value > 120) {
+                } else if (value > 65) {
                   return `${value}? Come on, youre not that old yet!`;
                 }
 

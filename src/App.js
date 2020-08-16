@@ -11,22 +11,22 @@ function App() {
     if (Age < 18) {
       Age = 18; //if below 18 they dont get paid
     }
-    const workingYears = 90 - Age;
+    const workingYears = 65 - Age;
     var savingsTotal = 0;
     var savingsFromGov = 0;
     var savingsFromEmployer = 0;
     var savingsFromInvestment = 0;
-    const interestRate = 0.03; // investment fund revenue
+    const interestRate = 0.015; // investment fund revenue
     const EmployerConstribution = 0.03;
     const tax = 0.175; // tax on investment
     for (var year = 0; year < workingYears; year++) {
       savingsFromInvestment =
-        savingsFromInvestment +
-        (Salary * CntrbRate + Salary * EmployerConstribution + savingsTotal) *
-          (interestRate * (1 - tax));
+        savingsFromInvestment + savingsTotal * (interestRate * (1 - tax));
       savingsTotal =
-        (Salary * CntrbRate + Salary * EmployerConstribution + savingsTotal) *
-          (1 + interestRate * (1 - tax)) +
+        Salary * CntrbRate +
+        Salary * EmployerConstribution +
+        savingsTotal +
+        savingsTotal * (interestRate * (1 - tax)) +
         521.43;
       savingsFromGov = savingsFromGov + 521.43;
       savingsFromEmployer =
@@ -35,7 +35,7 @@ function App() {
     const percentGov = savingsFromGov / savingsTotal;
     const percentEmpl = savingsFromEmployer / savingsTotal;
     const percentInvs = savingsFromInvestment / savingsTotal;
-    const necessaryRetirementFunds = 645 * 52 * (90 - 65) * Rate;
+    const necessaryRetirementFunds = 645 * 52 * Rate;
 
     // how much years
     const equivalentRetirementYears = savingsTotal / necessaryRetirementFunds;
@@ -106,22 +106,39 @@ function App() {
         (calculation[2] * 100 + calculation[1] * 100 + calculation[3] * 100);
       if (isPieChartPage) {
         arrayForReturn[i] = [
-          { title: "Government Contribution", value: govVal, color: "#E38627" },
-          { title: "Employee Contribution", value: empVal, color: "#C13C37" },
-          { title: "Return fron Investment", value: invVal, color: "#6A2135" },
-          { title: "Your Contribution", value: yourVal, color: "#FBFVBF" },
+          {
+            title: "Government Contribution",
+            value: govVal,
+            color: "#5D8C2E",
+          },
+          { title: "Employee Contribution", value: empVal, color: "#6FA638" },
+          { title: "Return fron Investment", value: invVal, color: "#619730" },
+          { title: "Your Contribution", value: yourVal, color: "#4caf50" },
         ];
         ////////////////////////CHANGED
         tableData[i] = [
-          { title: "Savings from Government", value: tableStuff[2] },
-          { title: "Savings from Employer", value: tableStuff[1] },
-          { title: "Savings from Investment", value: tableStuff[3] },
+          {
+            title: "Savings from Government",
+            value: tableStuff[2],
+            percentage: govVal,
+          },
+          {
+            title: "Savings from Employer",
+            value: tableStuff[1],
+            percentage: empVal,
+          },
+          {
+            title: "Savings from Investment",
+            value: tableStuff[3],
+            percentage: invVal,
+          },
           {
             title: "Your Savings",
             value:
               tableStuff[0] - (tableStuff[1] + tableStuff[2] + tableStuff[3]),
+            percentage: yourVal,
           },
-          { title: "Total Savings", value: tableStuff[0] },
+          { title: "Total Savings", value: tableStuff[0], percentage: 100 },
         ];
       } else {
         arrayForReturn[i] = { x: contributionRates[i], y: calculation[0] };
@@ -133,10 +150,9 @@ function App() {
   const [userInput, setUserInput] = useState(true);
   const [data, setData] = useState(null);
   const handleUserInput = (name, location, age, profession) => {
-    console.log(
-      CalculateSavings("Advertising, Arts and Media", 20, "Auckland", false)
-    );
-    //setData(CalculateSavings(profession, age, location, true));
+    const resData = CalculateSavings(profession, age, location, true);
+    setData(CalculateSavings(profession, age, location, true));
+
     setUserInput(true);
   };
 
@@ -153,10 +169,13 @@ function App() {
           callBack={handleUserInput}
         />
       </div>
-      {/* Need to add conditional for rendering the next few sections once user input has been given..*/}
-      <KiwiSaverIntro />
-      <PieGraph />
-      <BarGraph />
+      {data === null ? null : (
+        <>
+          <KiwiSaverIntro />
+          <PieGraph data={data[0]} tableData={data[1]} />
+          <BarGraph />
+        </>
+      )}
     </div>
   );
 }
