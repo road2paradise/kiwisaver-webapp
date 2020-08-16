@@ -1,27 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import ChatBot from "react-simple-chatbot";
+import Owl from "./Images/owl_head.png";
+import Typography from "@material-ui/core/Typography";
+import ReactTypingEffect from "react-typing-effect";
+import Review from "./Review";
 import "./css/ChatBoxComponent.css";
-import Review from "./Response";
 
 const theme = {
   background: "#f5f8fb",
   fontFamily: "Roboto",
   headerBgColor: "#fff",
-  headerFontColor: "#fff",
-  headerFontSize: "0",
+  headerFontColor: "#4caf50",
+  headerFontSize: "10",
   botBubbleColor: "#4caf50",
   botFontColor: "#fff",
   userBubbleColor: "#fff",
   userFontColor: "#4a4a4a",
 };
 
-function ChatBoxComponent() {
+function ChatBoxComponent(props) {
+  function handleUserInput(values) {
+    props.callBack(
+      values.values[0],
+      values.values[1],
+      values.values[2],
+      values.values[4]
+    );
+  }
   return (
     <>
+      <Typography
+        classes={{ label: "description" }}
+        color="secondary"
+        variant="h5"
+        component="h1"
+      >
+        {" "}
+        <ReactTypingEffect
+          className="description"
+          speed={80}
+          eraseDelay={1000000}
+          text="Hoot hoot, it’s Hedwig here. Hooray you one step closer to your dream
+          goals, by being curious about how KiwiSaver can help you. Tell me more
+          about yourself and I will make a you a personalised journey!"
+        />
+      </Typography>
       <ThemeProvider theme={theme}>
         <ChatBot
-          hideBotAvatar={true}
+          headerTitle="Hedwig"
+          botAvatar={Owl}
           steps={[
             {
               id: "1",
@@ -262,10 +290,12 @@ function ChatBoxComponent() {
             },
             {
               id: "end-message",
-              message: "Thanks! Your data was submitted successfully!",
+              message:
+                "Thanks! to see your own personalised data, Scroll down!",
               end: true,
             },
           ]}
+          handleEnd={(values) => handleUserInput(values)}
         />{" "}
       </ThemeProvider>
     </>

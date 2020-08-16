@@ -1,9 +1,23 @@
 .rsc {
   margin-top: 5%;
-  margin-left: 35%;
+  margin-left: 40%;
+  margin-bottom: 20%;
 }
+.owl {
+  height: 30%;
+  width: 30%;
+}
+
 @media only screen and (max-width: 800px) {
   .rsc {
     margin: auto;
   }
+  .owl {
+    height: 50% !important;
+    width: 50% !important;
+  }
+}
+.MuiTypography-h5 {
+  margin: auto !important;
+  width: 50%;
 }

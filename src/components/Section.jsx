@@ -3,29 +3,36 @@ import { Typography } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import TextComponent from "./TextComponent";
 import ChatBoxComponent from "./ChatBoxComponent";
+import KiwisaverIntro from "./KiwisaverIntro";
+
 import "./css/Section.css";
 
-export default function Section({ title, id, type }) {
+function Section(props) {
   let component = null;
-  switch (type) {
+  function handleUserInput(name, location, age, profession) {
+    props.callBack(name, location, age, profession);
+  }
+  switch (props.type) {
     case "text":
       component = <TextComponent />;
       break;
     case "chat-bot":
-      component = <ChatBoxComponent />;
+      component = <ChatBoxComponent callBack={handleUserInput} />;
       break;
     default:
       component = null;
   }
 
   return (
-    <div className="section-content" id={id}>
-      <Container maxWidth="lg" classes={{ label: `section-${id}` }}>
+    <div className="section-content" id={props.callBackid}>
+      <Container maxWidth="Xl" classes={{ label: `section-${props.id}` }}>
         <Typography color="secondary" variant="h2" component="h1">
-          {title}
+          {props.title}
         </Typography>{" "}
         {component}{" "}
       </Container>
     </div>
   );
 }
+
+export default Section;

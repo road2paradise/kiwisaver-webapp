@@ -1,0 +1,15 @@
+.table {
+  margin-top: 10%;
+  margin-left: 5%;
+  width: 50%;
+  float: left;
+}
+.pie-graph {
+  margin-top: 8%;
+  margin-right: 10%;
+  float: right;
+  margin-left: 10%;
+  width: 20%;
+  height: 20%;
+  margin-bottom: 20%;
+}

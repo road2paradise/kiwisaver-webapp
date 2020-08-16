@@ -5,7 +5,6 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import purple from "@material-ui/core/colors/purple";
 import green from "@material-ui/core/colors/green";
 
 // Defining MUI themes here. This chooses or selects our colour palatte
@@ -16,7 +15,14 @@ const theme = createMuiTheme({
       main: green[500],
     },
     secondary: {
-      main: green[400],
+      main: green[500],
+    },
+  },
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: "1.25em",
+      },
     },
   },
 });
