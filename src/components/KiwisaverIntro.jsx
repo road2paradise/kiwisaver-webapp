@@ -19,7 +19,7 @@ function KiwisaverIntro() {
         variant="h2"
         component="h1"
       >
-        Kiwisaver for dummies
+        What is KiwiSaver?
       </Typography>
       <Typography
         classes={{ label: "description" }}
@@ -27,7 +27,7 @@ function KiwisaverIntro() {
         variant="h6"
         component="h1"
       >
-        *PUT TEXT HERE*
+        A simple breakdown of how KiwiSaver works
       </Typography>
 
       <div class="row">

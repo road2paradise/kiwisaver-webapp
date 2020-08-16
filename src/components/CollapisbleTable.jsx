@@ -64,8 +64,8 @@ export default function CollapsibleTable(props) {
       rows.push(
         createData(
           e.title,
-          Math.round(e.value * 10) / 10,
-          Math.floor(e.percentage)
+          Math.round(e.value / 1000) * 1000,
+          Math.floor(e.percentage * 10) / 10
         )
       );
     });

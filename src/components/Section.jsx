@@ -26,7 +26,7 @@ function Section(props) {
   return (
     <div className="section-content" id={props.callBackid}>
       <Container maxWidth="Xl" classes={{ label: `section-${props.id}` }}>
-        <Typography color="secondary" variant="h2" component="h1">
+        <Typography color="secondary" variant="h7" component="h1">
           {props.title}
         </Typography>{" "}
         {component}{" "}

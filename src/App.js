@@ -109,11 +109,11 @@ function App() {
           {
             title: "Government Contribution",
             value: govVal,
-            color: "#5D8C2E",
+            color: "#d54062",
           },
-          { title: "Employee Contribution", value: empVal, color: "#6FA638" },
-          { title: "Return fron Investment", value: invVal, color: "#619730" },
-          { title: "Your Contribution", value: yourVal, color: "#4caf50" },
+          { title: "Employee Contribution", value: empVal, color: "#ffa36c" },
+          { title: "Return fron Investment", value: invVal, color: "#ebdc87" },
+          { title: "Your Contribution", value: yourVal, color: "#799351 " },
         ];
         ////////////////////////CHANGED
         tableData[i] = [
@@ -141,19 +141,22 @@ function App() {
           { title: "Total Savings", value: tableStuff[0], percentage: 100 },
         ];
       } else {
-        arrayForReturn[i] = { x: contributionRates[i], y: calculation[0] };
+        arrayForReturn[i] = {
+          name: contributionRates[i] * 100,
+          RetirementYears: Math.floor(calculation[0]),
+        };
       }
     }
     ///////////////////////////CHANGED
     return [arrayForReturn, tableData];
   };
-  const [userInput, setUserInput] = useState(true);
-  const [data, setData] = useState(null);
+  const [pieData, setPieData] = useState(null);
+  const [barData, setBarData] = useState(null);
+  const [name, setName] = useState(null);
   const handleUserInput = (name, location, age, profession) => {
-    const resData = CalculateSavings(profession, age, location, true);
-    setData(CalculateSavings(profession, age, location, true));
-
-    setUserInput(true);
+    setName(name);
+    setPieData(CalculateSavings(profession, age, location, true));
+    setBarData(CalculateSavings(profession, age, location, false));
   };
 
   return (
@@ -169,11 +172,11 @@ function App() {
           callBack={handleUserInput}
         />
       </div>
-      {data === null ? null : (
+      {pieData === null ? null : (
         <>
           <KiwiSaverIntro />
-          <PieGraph data={data[0]} tableData={data[1]} />
-          <BarGraph />
+          <PieGraph data={pieData[0]} tableData={pieData[1]} userName={name} />
+          <BarGraph data={barData} />
         </>
       )}
     </div>

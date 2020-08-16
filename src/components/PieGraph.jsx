@@ -10,7 +10,6 @@ import { PieChart } from "react-minimal-pie-chart";
 import "./css/PieGraph.css";
 
 function PieGraph(props) {
-  const name = "Kenny";
   const [percentage, setPercentage] = useState(0);
   const handleChange = (event) => {
     setPercentage(event.target.value);
@@ -22,11 +21,14 @@ function PieGraph(props) {
     return (
       <>
         <Typography color="secondary" variant="h4" component="h1">
-          Hi {name}, Here is your personalised Kiwisaver journey based on the
-          information you gave us!
+          Hi {props.userName}, Here is your personalised Kiwisaver journey based
+          on the information you gave us!
         </Typography>
         <div className="table">
-          <CollapsibleTable data={props.tableData[percentage]} />
+          <CollapsibleTable
+            data={props.tableData[percentage]}
+            percentageData={props.data[percentage]}
+          />
         </div>
         <div className="pie-graph">
           <FormControl component="fieldset">
