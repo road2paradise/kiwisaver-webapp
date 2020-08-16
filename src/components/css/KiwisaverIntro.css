@@ -1,0 +1,42 @@
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.row {
+  padding: 0 400px;
+  margin-top: 70px;
+}
+.column {
+  width: 25% !important;
+  padding: 0px;
+  flex: 15%;
+  align-items: center;
+  display: inline-block;
+}
+.add {
+  width: 70px;
+  padding: 90px 100px;
+}
+.add-2 {
+  width: 70px;
+  padding: 100px 100px;
+}
+.equal {
+  width: 70px;
+  padding: 85px 0px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.wrapper {
+  margin-bottom: 500px;
+}
+.hide {
+  display: none !important;
+}
+.column-1:hover + .hide {
+  display: float;
+  color: red;
+}

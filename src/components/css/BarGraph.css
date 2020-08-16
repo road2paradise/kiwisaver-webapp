@@ -1,0 +1,16 @@
+.bar-wrapper {
+  margin-top: 40%;
+}
+.bar-wrapper .MuiTypography-h3 {
+  position: absolute;
+  margin-left: 40%;
+}
+.bar-wrapper .MuiTypography-h6 {
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+.recharts-cartesian-axis {
+  font-family: "Roboto";
+  font-weight: 0;
+}
