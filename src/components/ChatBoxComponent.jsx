@@ -120,46 +120,46 @@ function ChatBoxComponent(props) {
                 {
                   value: "Education",
                   label: "Education",
-                  trigger: "19"
+                  trigger: "19",
                 },
                 {
                   value: "Healthcare",
                   label: "Healthcare",
-                  trigger: "19"
+                  trigger: "19",
                 },
                 {
                   value: "Hospitality",
                   label: "Hospitality",
-                  trigger: "19"
+                  trigger: "19",
                 },
                 {
                   value: "Law",
                   label: "Law",
-                  trigger: "19"
+                  trigger: "19",
                 },
                 {
                   value: "Manufacturing",
                   label: "Manufacturing",
-                  trigger: "19"
+                  trigger: "19",
                 },
                 {
                   value: "Social Work",
                   label: "Social Work",
-                  trigger: "19"
+                  trigger: "19",
                 },
                 {
                   value: "Technology",
                   label: "Technology",
-                  trigger: "19"
+                  trigger: "19",
                 },
                 {
                   value: "Agriculture",
                   label: "Agriculture",
-                  trigger: "19"
+                  trigger: "19",
                 },
               ],
             },
-            {
+            //            {
             //   id: "profession",
             //   options: [
             //     {
@@ -230,7 +230,6 @@ function ChatBoxComponent(props) {
             //     { value: "Sales", label: "Sales", trigger: "profession" },
             //   ],
             // },
-
             {
               id: "19",
               message: "Great! Check out your summary",
