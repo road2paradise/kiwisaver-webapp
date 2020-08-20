@@ -108,64 +108,72 @@ function ChatBoxComponent(props) {
             {
               id: "7",
               message: "Which industry would you like to be in?",
-              trigger: "8",
+              trigger: "profession",
             },
 
             {
-              id: "8",
+              id: "profession",
               options: [
-                { value: "Arts", label: "Arts", trigger: "profession" },
-                { value: "Commerce", label: "Commerce" },
-                { value: "Construction", label: "Construction" },
+                { value: "Arts", label: "Arts", trigger: "19" },
+                { value: "Commerce", label: "Commerce", trigger: "19" },
+                { value: "Construction", label: "Construction", trigger: "19" },
                 {
                   value: "Education",
                   label: "Education",
+                  trigger: "19"
                 },
                 {
                   value: "Healthcare",
                   label: "Healthcare",
+                  trigger: "19"
                 },
                 {
                   value: "Hospitality",
                   label: "Hospitality",
+                  trigger: "19"
                 },
                 {
                   value: "Law",
                   label: "Law",
+                  trigger: "19"
                 },
                 {
                   value: "Manufacturing",
                   label: "Manufacturing",
+                  trigger: "19"
                 },
                 {
                   value: "Social Work",
                   label: "Social Work",
+                  trigger: "19"
                 },
                 {
                   value: "Technology",
                   label: "Technology",
+                  trigger: "19"
                 },
                 {
                   value: "Agriculture",
                   label: "Agriculture",
+                  trigger: "19"
                 },
               ],
             },
             {
-              id: "profession",
-              options: [
-                {
-                  value: "Advertising, Arts and Media",
-                  label: "Advertising, Arts and Media",
-                  trigger: "19",
-                },
-                {
-                  value: "Design and Architecture",
-                  label: "Design and Architecture",
-                  trigger: "19",
-                },
-              ],
-            },
+            //   id: "profession",
+            //   options: [
+            //     {
+            //       value: "Advertising, Arts and Media",
+            //       label: "Advertising, Arts and Media",
+            //       trigger: "19",
+            //     },
+            //     {
+            //       value: "Design and Architecture",
+            //       label: "Design and Architecture",
+            //       trigger: "19",
+            //     },
+            //   ],
+            // },
             // {
             //   id: "10",
             //   options: [
