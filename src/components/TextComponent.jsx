@@ -12,7 +12,7 @@ function TextComponent() {
         <img src={Gif} alt="owl" className="owl" />
         <div class="column">
           <img src={Logo} alt="WiserLogo" className="logo" />
-          <Typography color="secondary" variant="h2" component="h1">
+          <Typography color="secondary" variant="h3" component="h1">
             <ReactTypingEffect
               speed={85}
               eraseDelay={1000000}
